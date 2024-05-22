@@ -8,15 +8,20 @@ import {
   SaveOptionsType,
   UpdateCriteriaType,
 } from '@app/common/types/dbInterfaces';
+import { TodoRepositoryInterface } from '@app/domain/interfaces/infrastructure/todo/todoRepository.interface';
 
+/**
+ * Represents a Todo repository.
+ */
 @Injectable({ scope: Scope.REQUEST })
-export class TodoRepository {
+export class TodoRepository implements TodoRepositoryInterface {
   constructor(private readonly _context: AppContext) {}
 
   /**
-   * Create a new todo
-   * @param options Todo options
-   * @returns Todo
+   * Retrieves all todos from the database.
+   * @param options - Optional criteria to filter the todos.
+   * @returns A promise that resolves to an array of todos.
+   * @throws HttpException if there's an error retrieving the todos from the database.
    */
   async getAllTodos(options?: GetAllCriteriaType<Todo>): Promise<Todo[]> {
     try {
@@ -30,9 +35,10 @@ export class TodoRepository {
   }
 
   /**
-   * Create a new todo
-   * @param options Todo options
-   * @returns Todo
+   * Creates a new todo in the database.
+   * @param todo - The todo object to create.
+   * @returns A promise that resolves to the created todo.
+   * @throws HttpException if there's an error creating the todo in the database.
    */
   async createTodo(todo: Todo): Promise<Todo> {
     try {
@@ -47,9 +53,10 @@ export class TodoRepository {
   }
 
   /**
-   * Find todo by id
-   * @param id Todo id
-   * @returns Todo
+   * Finds a todo by its ID in the database.
+   * @param options - The criteria to find the todo.
+   * @returns A promise that resolves to the found todo.
+   * @throws HttpException if there's an error finding the todo in the database.
    */
   async findTodoById(options: GetOneCriteriaType<Todo>): Promise<Todo> {
     try {
@@ -63,9 +70,11 @@ export class TodoRepository {
   }
 
   /**
-   * Delete todo
-   * @param criteria Todo id
-   * @returns Todo
+   * Updates a todo in the database.
+   * @param criteria - The criteria to find the todo to update.
+   * @param todo - The updated todo object.
+   * @returns A promise that resolves to the updated todo.
+   * @throws HttpException if there's an error updating the todo in the database.
    */
   async updateTodo(
     criteria: UpdateCriteriaType<Todo>,
@@ -87,9 +96,10 @@ export class TodoRepository {
   }
 
   /**
-   * Delete todo
-   * @param criteria Todo id
-   * @returns Todo
+   * Deletes a todo from the database.
+   * @param criteria - The criteria to find the todo to delete.
+   * @returns A promise that resolves to the deleted todo.
+   * @throws HttpException if there's an error deleting the todo from the database.
    */
   async deleteTodo(criteria: DeleteCriteriaType<Todo>): Promise<Todo> {
     try {
@@ -105,10 +115,11 @@ export class TodoRepository {
   }
 
   /**
-   * Save todo
-   * @param todo Todo
-   * @param options Save options
-   * @returns
+   * Saves a todo in the database.
+   * @param todo - The todo object to save.
+   * @param options - Optional save options.
+   * @returns A promise that resolves to the saved todo.
+   * @throws HttpException if there's an error saving the todo in the database.
    */
   async saveTodo(todo: Todo, options?: SaveOptionsType<Todo>): Promise<Todo> {
     try {

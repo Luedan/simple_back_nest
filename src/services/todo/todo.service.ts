@@ -6,20 +6,22 @@ import { TodoResponseDto } from '@app/domain/todo/dto/todo-response.dto';
 import { TodoUpdateDto } from '@app/domain/todo/dto/todo-update.dto';
 import { TodoRepository } from '@app/infrastructure/persistence/repositories/todo/todo.repository';
 import { Todo } from '@app/domain/todo/todo.entity';
+import { TodoServiceInterface } from '@app/domain/interfaces/services/todo/todoService.interface';
 
 /**
- * Todo services
+ * Represents a Todo service.
  */
 @Injectable()
-export class TodoServices {
+export class TodoServices implements TodoServiceInterface {
   constructor(
     private readonly _todoRepository: TodoRepository,
     @InjectMapper() private readonly _mapper: Mapper,
   ) {}
 
   /**
-   * Create a new todo
-   * @param createTodoDto
+   * Creates a new todo.
+   * @param createTodoDto - The data for creating a todo.
+   * @returns A promise that resolves to the created todo.
    */
   async create(createTodoDto: TodoRequestDto): Promise<TodoResponseDto> {
     const todoPayload = this._mapper.map(createTodoDto, TodoRequestDto, Todo);
@@ -32,7 +34,8 @@ export class TodoServices {
   }
 
   /**
-   * Get all todos
+   * Retrieves all todos.
+   * @returns A promise that resolves to an array of todos.
    */
   async findAll(): Promise<TodoResponseDto[]> {
     const todos = await this._todoRepository.getAllTodos();
@@ -43,9 +46,9 @@ export class TodoServices {
   }
 
   /**
-   * Get todo by id
-   * @param id
-   * @returns
+   * Retrieves a todo by its ID.
+   * @param id - The ID of the todo to retrieve.
+   * @returns A promise that resolves to the retrieved todo.
    */
   async findOne(id: number): Promise<TodoResponseDto> {
     const todo = await this._todoRepository.findTodoById({
@@ -58,10 +61,10 @@ export class TodoServices {
   }
 
   /**
-   * Update todo
-   * @param id
-   * @param updateTodoDto
-   * @returns
+   * Updates a todo.
+   * @param id - The ID of the todo to update.
+   * @param updateTodoDto - The data for updating the todo.
+   * @returns A promise that resolves to the updated todo.
    */
   async update(
     id: number,
@@ -81,9 +84,9 @@ export class TodoServices {
   }
 
   /**
-   * Remove todo
-   * @param id
-   * @returns
+   * Removes a todo.
+   * @param id - The ID of the todo to remove.
+   * @returns A promise that resolves to the removed todo.
    */
   async remove(id: number): Promise<TodoResponseDto> {
     const todo = await this._todoRepository.deleteTodo({
