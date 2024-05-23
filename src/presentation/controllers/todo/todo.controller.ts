@@ -1,5 +1,10 @@
+import { CreateTodo } from '@app/application/useCases/todo/createTodo.service';
+import { DeleteTodo } from '@app/application/useCases/todo/deleteTodo.service';
+import { FindAllTodo } from '@app/application/useCases/todo/findAllTodo.service';
+import { FindOneTodo } from '@app/application/useCases/todo/findOneTodo.service';
+import { UpdateTodo } from '@app/application/useCases/todo/updateTodo.service';
 import { TodoRequestDto } from '@app/domain/todo/dto/todo-request.dto';
-import { TodoServices } from '@app/services/todo/todo.service';
+import { TodoUpdateDto } from '@app/domain/todo/dto/todo-update.dto';
 import {
   Controller,
   Get,
@@ -17,7 +22,13 @@ import { ApiTags } from '@nestjs/swagger';
 @Controller('todos')
 @ApiTags('Todos')
 export class TodoController {
-  constructor(private readonly todoServices: TodoServices) {}
+  constructor(
+    private readonly _createTodo: CreateTodo,
+    private readonly _updateTodo: UpdateTodo,
+    private readonly _findAllTodo: FindAllTodo,
+    private readonly _findOneTodo: FindOneTodo,
+    private readonly _deleteTodo: DeleteTodo,
+  ) {}
 
   /**
    * Create a new todo
@@ -26,7 +37,7 @@ export class TodoController {
    */
   @Post()
   create(@Body() createTodoDto: TodoRequestDto) {
-    return this.todoServices.create(createTodoDto);
+    return this._createTodo.handle(createTodoDto);
   }
 
   /**
@@ -35,7 +46,7 @@ export class TodoController {
    */
   @Get()
   findAll() {
-    return this.todoServices.findAll();
+    return this._findAllTodo.handle();
   }
 
   /**
@@ -45,7 +56,7 @@ export class TodoController {
    */
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.todoServices.findOne(+id);
+    return this._findOneTodo.handle(+id);
   }
 
   /**
@@ -55,8 +66,8 @@ export class TodoController {
    * @returns
    */
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateTodoDto: TodoRequestDto) {
-    return this.todoServices.update(+id, updateTodoDto);
+  update(@Param('id') id: string, @Body() updateTodoDto: TodoUpdateDto) {
+    return this._updateTodo.handle(+id, updateTodoDto);
   }
 
   /**
@@ -66,6 +77,6 @@ export class TodoController {
    */
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.todoServices.remove(+id);
+    return this._deleteTodo.handle(+id);
   }
 }

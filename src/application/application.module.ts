@@ -2,9 +2,9 @@ import { Module } from '@nestjs/common';
 import { AutomapperModule } from '@automapper/nestjs';
 import { classes } from '@automapper/classes';
 import { InfrastructureModule } from '@app/infrastructure/infrastructure.module';
-import { SERVICES } from './services';
-import { PROFILES } from './profiles';
 import { JwtModule } from '@nestjs/jwt';
+import { SERVICES } from './useCases';
+import { PROFILES } from './profiles';
 
 @Module({
   imports: [
@@ -23,4 +23,4 @@ import { JwtModule } from '@nestjs/jwt';
   providers: [...SERVICES, ...PROFILES],
   exports: [...SERVICES],
 })
-export class ServiceModule {}
+export class ApplicationModule {}
