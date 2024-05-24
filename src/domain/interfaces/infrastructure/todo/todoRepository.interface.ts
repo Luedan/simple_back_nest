@@ -16,21 +16,21 @@ export interface TodoRepositoryInterface {
    * @param options - The criteria to filter the Todos.
    * @returns A promise that resolves to an array of Todos.
    */
-  getAllTodos(options?: GetAllCriteriaType<Todo>): Promise<Todo[]>;
+  getAll(options?: GetAllCriteriaType<Todo>): Promise<Todo[]>;
 
   /**
    * Creates a new Todo.
    * @param todo - The Todo object to create.
    * @returns A promise that resolves to the created Todo.
    */
-  createTodo(todo: Todo): Promise<Todo>;
+  create(todo: Todo): Promise<Todo>;
 
   /**
-   * Finds a Todo by its ID.
+   * Finds a Todo by the provided criteria.
    * @param options - The criteria to find the Todo.
    * @returns A promise that resolves to the found Todo.
    */
-  findTodoById(options: GetOneCriteriaType<Todo>): Promise<Todo>;
+  findBy(options: GetOneCriteriaType<Todo>): Promise<Todo>;
 
   /**
    * Updates a Todo based on the provided criteria.
@@ -38,14 +38,14 @@ export interface TodoRepositoryInterface {
    * @param todo - The updated Todo object.
    * @returns A promise that resolves to the updated Todo.
    */
-  updateTodo(criteria: UpdateCriteriaType<Todo>, todo: Todo): Promise<Todo>;
+  update(criteria: UpdateCriteriaType<Todo>, todo: Todo): Promise<Todo>;
 
   /**
    * Deletes a Todo based on the provided criteria.
    * @param criteria - The criteria to delete the Todo.
    * @returns A promise that resolves to a boolean indicating if the Todo was deleted successfully.
    */
-  deleteTodo(criteria: DeleteCriteriaType<Todo>): Promise<Todo>;
+  delete(criteria: DeleteCriteriaType<Todo>): Promise<Todo>;
 
   /**
    * Saves a Todo.
@@ -53,5 +53,5 @@ export interface TodoRepositoryInterface {
    * @param options - The options for saving the Todo.
    * @returns A promise that resolves to the saved Todo.
    */
-  saveTodo(todo: Todo, options?: SaveOptionsType<Todo>): Promise<Todo>;
+  save(todo: Todo, options?: SaveOptionsType<Todo>): Promise<Todo>;
 }

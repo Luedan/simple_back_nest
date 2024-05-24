@@ -31,7 +31,7 @@ export class CreateTodo implements CreateTodoInterface {
   async handle(todoRequestDto: TodoRequestDto): Promise<TodoResponseDto> {
     const todoPayload = this._mapper.map(todoRequestDto, TodoRequestDto, Todo);
 
-    const todo = await this._todoRepository.createTodo(todoPayload);
+    const todo = await this._todoRepository.create(todoPayload);
 
     const response = this._mapper.map(todo, Todo, TodoResponseDto);
 

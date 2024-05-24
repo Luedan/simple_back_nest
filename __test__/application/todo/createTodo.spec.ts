@@ -29,7 +29,7 @@ describe('Create Todo', () => {
       .returns(TodoRequestMock);
 
     todoRepositoryMock
-      .setup((todoRepository) => todoRepository.createTodo(It.IsAny()))
+      .setup((todoRepository) => todoRepository.create(It.IsAny()))
       .returns(Promise.resolve(TodoRequestMock));
 
     mapperMock

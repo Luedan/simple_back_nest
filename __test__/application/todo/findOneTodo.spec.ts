@@ -23,7 +23,7 @@ describe('Find One Todo', () => {
   it('should return a todo', async () => {
     // Arrange
     todoRepositoryMock
-      .setup((todoRepository) => todoRepository.findTodoById(It.IsAny()))
+      .setup((todoRepository) => todoRepository.findBy(It.IsAny()))
       .returns(Promise.resolve(TodoMock));
 
     mapperMock

@@ -28,7 +28,7 @@ export class FindOneTodo implements FindOneTodoInterface {
    * @returns A Promise that resolves to a TodoResponseDto object representing the retrieved todo.
    */
   async handle(id: number): Promise<TodoResponseDto> {
-    const todo = await this._todoRepository.findTodoById({
+    const todo = await this._todoRepository.findBy({
       where: { id },
     });
 

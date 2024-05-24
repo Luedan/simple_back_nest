@@ -27,7 +27,7 @@ export class DeleteTodo {
    * @returns A promise that resolves to a TodoResponseDto representing the deleted todo item.
    */
   async handle(id: number): Promise<TodoResponseDto> {
-    const todo = await this._todoRepository.deleteTodo({
+    const todo = await this._todoRepository.delete({
       id,
     });
 

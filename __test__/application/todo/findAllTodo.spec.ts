@@ -23,7 +23,7 @@ describe('Find All Todo', () => {
   it('should return all todos', async () => {
     // Arrange
     todoRepositoryMock
-      .setup((todoRepository) => todoRepository.getAllTodos())
+      .setup((todoRepository) => todoRepository.getAll())
       .returns(Promise.resolve(TodoMockArray));
 
     mapperMock

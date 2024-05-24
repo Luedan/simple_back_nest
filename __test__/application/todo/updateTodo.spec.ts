@@ -36,9 +36,7 @@ describe('Update Todo', () => {
       .returns(Promise.resolve(TodoResponseMock));
 
     todoRepositoryMock
-      .setup((todoRepository) =>
-        todoRepository.updateTodo(It.IsAny(), It.IsAny()),
-      )
+      .setup((todoRepository) => todoRepository.update(It.IsAny(), It.IsAny()))
       .returns(Promise.resolve(TodoMock));
 
     mapperMock

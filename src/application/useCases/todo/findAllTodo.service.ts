@@ -26,7 +26,7 @@ export class FindAllTodo implements FindAllTodoInterface {
    * @returns A promise that resolves to an array of TodoResponseDto objects.
    */
   async handle(): Promise<TodoResponseDto[]> {
-    const todos = await this._todoRepository.getAllTodos();
+    const todos = await this._todoRepository.getAll();
 
     const response = this._mapper.mapArray(todos, Todo, TodoResponseDto);
 

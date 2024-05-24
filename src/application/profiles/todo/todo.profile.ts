@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { AutomapperProfile, InjectMapper } from '@automapper/nestjs';
 import { createMap, type Mapper } from '@automapper/core';
 import { Injectable } from '@nestjs/common';

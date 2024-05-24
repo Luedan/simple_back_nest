@@ -49,7 +49,7 @@ export class UpdateTodo implements UpdateTodoInterface {
       Todo,
     );
 
-    const todo = await this._todoRepository.updateTodo(id, todoUpdatePayload);
+    const todo = await this._todoRepository.update(id, todoUpdatePayload);
 
     const response = this._mapper.map(todo, Todo, TodoResponseDto);
 

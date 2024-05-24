@@ -23,12 +23,12 @@ export class TodoRepository implements TodoRepositoryInterface {
    * @returns A promise that resolves to an array of todos.
    * @throws HttpException if there's an error retrieving the todos from the database.
    */
-  async getAllTodos(options?: GetAllCriteriaType<Todo>): Promise<Todo[]> {
+  async getAll(options?: GetAllCriteriaType<Todo>): Promise<Todo[]> {
     try {
       return await this._context.todo.getAll(options);
     } catch (error) {
       throw new HttpException(
-        `Error de DB: ${error?.message || ''}`,
+        `Error de DB: ${error?.message}`,
         error?.status || 500,
       );
     }
@@ -40,30 +40,30 @@ export class TodoRepository implements TodoRepositoryInterface {
    * @returns A promise that resolves to the created todo.
    * @throws HttpException if there's an error creating the todo in the database.
    */
-  async createTodo(todo: Todo): Promise<Todo> {
+  async create(todo: Todo): Promise<Todo> {
     try {
       const userData = await this._context.todo.create(todo);
       return { ...todo, ...userData?.raw[0], ...userData?.generatedMaps[0] };
     } catch (error) {
       throw new HttpException(
-        `Error de DB: ${error?.message || ''}`,
+        `Error de DB: ${error?.message}`,
         error?.status || 500,
       );
     }
   }
 
   /**
-   * Finds a todo by its ID in the database.
+   * Find a todo by the provided criteria in the database.
    * @param options - The criteria to find the todo.
    * @returns A promise that resolves to the found todo.
    * @throws HttpException if there's an error finding the todo in the database.
    */
-  async findTodoById(options: GetOneCriteriaType<Todo>): Promise<Todo> {
+  async findBy(options: GetOneCriteriaType<Todo>): Promise<Todo> {
     try {
       return await this._context.todo.getOne(options);
     } catch (error) {
       throw new HttpException(
-        `Error de DB: ${error?.message || ''}`,
+        `Error de DB: ${error?.message}`,
         error?.status || 500,
       );
     }
@@ -76,10 +76,7 @@ export class TodoRepository implements TodoRepositoryInterface {
    * @returns A promise that resolves to the updated todo.
    * @throws HttpException if there's an error updating the todo in the database.
    */
-  async updateTodo(
-    criteria: UpdateCriteriaType<Todo>,
-    todo: Todo,
-  ): Promise<Todo> {
+  async update(criteria: UpdateCriteriaType<Todo>, todo: Todo): Promise<Todo> {
     try {
       const updateTodo = await this._context.todo.update(criteria, todo);
       return {
@@ -89,7 +86,7 @@ export class TodoRepository implements TodoRepositoryInterface {
       };
     } catch (error) {
       throw new HttpException(
-        `Error de DB: ${error?.message || ''}`,
+        `Error de DB: ${error?.message}`,
         error?.status || 500,
       );
     }
@@ -101,14 +98,13 @@ export class TodoRepository implements TodoRepositoryInterface {
    * @returns A promise that resolves to the deleted todo.
    * @throws HttpException if there's an error deleting the todo from the database.
    */
-  async deleteTodo(criteria: DeleteCriteriaType<Todo>): Promise<Todo> {
+  async delete(criteria: DeleteCriteriaType<Todo>): Promise<Todo> {
     try {
-      const todo = await this.findTodoById({ where: criteria });
       const deleteTodo = await this._context.todo.delete(criteria);
-      return { ...todo, ...deleteTodo?.raw[0] };
+      return { ...deleteTodo?.raw[0] };
     } catch (error) {
       throw new HttpException(
-        `Error de DB: ${error?.message || ''}`,
+        `Error de DB: ${error?.message}`,
         error?.status || 500,
       );
     }
@@ -121,13 +117,13 @@ export class TodoRepository implements TodoRepositoryInterface {
    * @returns A promise that resolves to the saved todo.
    * @throws HttpException if there's an error saving the todo in the database.
    */
-  async saveTodo(todo: Todo, options?: SaveOptionsType<Todo>): Promise<Todo> {
+  async save(todo: Todo, options?: SaveOptionsType<Todo>): Promise<Todo> {
     try {
       const userSaved = await this._context.todo.save(todo, options);
       return userSaved;
     } catch (error) {
       throw new HttpException(
-        `Error de DB: ${error?.message || ''}`,
+        `Error de DB: ${error?.message}`,
         error?.status || 500,
       );
     }

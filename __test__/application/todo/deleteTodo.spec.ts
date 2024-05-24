@@ -23,7 +23,7 @@ describe('Delete Todo', () => {
   it('should delete a todo', async () => {
     // Arrange
     todoRepositoryMock
-      .setup((todoRepository) => todoRepository.deleteTodo(It.IsAny()))
+      .setup((todoRepository) => todoRepository.delete(It.IsAny()))
       .returns(Promise.resolve(TodoMock));
 
     mapperMock
