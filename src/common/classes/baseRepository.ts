@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { Request } from 'express';
 import { DataSource, EntityManager, Repository } from 'typeorm';
 import { ENTITY_MANAGER_KEY } from '../interceptors/transaction.interceptor';

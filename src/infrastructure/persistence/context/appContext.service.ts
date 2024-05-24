@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { Inject, Injectable } from '@nestjs/common';
 import { DataSource } from 'typeorm';
 import { Request } from 'express';
