@@ -19,7 +19,7 @@ import { ENTITIES } from '@app/domain/entities';
       database: process.env.DB_DATABASE,
       entities: [...ENTITIES],
       logging: true,
-      synchronize: true,
+      synchronize: process.env.NODE_ENV !== 'production',
     }),
   ],
 })
