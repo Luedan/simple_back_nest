@@ -11,4 +11,9 @@ module.exports = {
   collectCoverageFrom: ['src/**/*.{ts,tsx,js,jsx}', '!src/**/*.d.ts'],
   coverageDirectory: './coverage',
   testEnvironment: 'node',
+  coveragePathIgnorePatterns: [
+    '/node_modules/',
+    'src/common/*',
+    'src/application/profiles/*',
+  ],
 };

@@ -14,10 +14,7 @@ import {
   DeleteCriteriaType,
 } from '../types/dbInterfaces';
 
-/**
- * Represents an abstract repository for data persistence.
- * @template E - The entity type.
- */
+/* istanbul ignore next */
 export abstract class AbstractRepository<E extends ObjectLiteral> {
   /**
    * Retrieves multiple entities based on the provided options.

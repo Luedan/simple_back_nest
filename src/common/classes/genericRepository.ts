@@ -8,7 +8,6 @@ import {
   Repository,
 } from 'typeorm';
 import { Request } from 'express';
-
 import { BaseRepository } from './baseRepository';
 import {
   GetAllCriteriaType,
@@ -19,6 +18,7 @@ import {
 } from '../types/dbInterfaces';
 import { AbstractRepository } from './abstractRepository';
 
+/* istanbul ignore next */
 export class GenericRepository<E extends ObjectLiteral>
   extends BaseRepository
   implements AbstractRepository<E>

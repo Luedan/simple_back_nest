@@ -71,12 +71,12 @@ export class TodoController {
   }
 
   /**
-   * Remove todo
+   * Delete todo
    * @param id
    * @returns
    */
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  delete(@Param('id') id: string) {
     return this._deleteTodo.handle(+id);
   }
 }

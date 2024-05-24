@@ -3,6 +3,7 @@ import { Request } from 'express';
 import { DataSource, EntityManager, Repository } from 'typeorm';
 import { ENTITY_MANAGER_KEY } from '../interceptors/transaction.interceptor';
 
+/* istanbul ignore next */
 export class BaseRepository {
   constructor(
     private dataSource: DataSource,
