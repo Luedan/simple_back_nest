@@ -1,73 +1,58 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Nombre del Proyecto
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Descripción concisa del proyecto.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Estructura del Proyecto
 
-## Description
+El proyecto está organizado siguiendo una arquitectura modular y basada en servicios, que facilita la escalabilidad y mantenimiento del código. A continuación se detalla la estructura de archivos y carpetas:
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+### Archivos de Configuración
 
-## Installation
+- `docker-compose.yml`: Configuración para Docker.
+- `Dockerfile`: Archivo para construir la imagen Docker.
+- `jest.config.js`: Configuración de Jest para pruebas.
+- `nest-cli.json`: Configuración del CLI de NestJS.
+- `package.json`, `pnpm-lock.yaml`: Gestión de dependencias.
+- `tsconfig.json`, `tsconfig.build.json`: Configuración de TypeScript para desarrollo y producción.
+- `README.md`: Documentación del proyecto.
 
-```bash
-$ pnpm install
-```
+### Estructura de Carpetas
 
-## Running the app
+- **`src/`**: Contiene el código fuente de la aplicación.
+  - **`application/`**: Lógica de aplicación y casos de uso.
+    - `application.module.ts`: Módulo principal de la capa de aplicación.
+    - **`profiles/`**: Transformaciones y mapeos entre modelos.
+    - **`useCases/`**: Implementaciones de casos de uso específicos (`todo`, etc.).
+  - `app.module.ts`: Módulo raíz de la aplicación.
+  - **`common/`**: Utilidades y clases compartidas.
+    - **`classes/`**: Clases genéricas y abstractas.
+    - **`filters/`**: Filtros para manejar excepciones HTTP.
+    - **`interceptors/`**: Interceptores para funciones comunes como transacciones.
+    - **`types/`**: Definiciones de tipos y interfaces utilizadas en todo el proyecto.
+  - **`domain/`**: Lógica del dominio.
+    - `entities.ts`: Definición de entidades del dominio.
+    - **`interfaces/`**: Interfaces para servicios y repositorios.
+    - **`todo/`**: Lógica específica del dominio `todo`.
+      - **`dto/`**: DTOs (Data Transfer Objects) relacionados con `todo`.
+      - `todo.entity.ts`: Definición de la entidad `todo`.
+  - **`infrastructure/`**: Detalles de implementación de infraestructura.
+    - **`external/`**: Integraciones externas como adaptadores HTTP o servicios externos.
+    - `infrastructure.module.ts`: Módulo principal de infraestructura.
+    - **`persistence/`**: Capa de persistencia de datos.
+      - **`context/`**: Contextos de base de datos u otros servicios.
+      - **`database/`**: Configuración y conexiones a la base de datos.
+      - **`repositories/`**: Implementaciones de los repositorios (`todo`, etc.).
+  - `main.ts`: Punto de entrada principal de la aplicación.
+  - **`presentation/`**: Capa de presentación.
+    - **`controllers/`**: Controladores que manejan las solicitudes HTTP.
+    - `presentation.module.ts`: Módulo principal de presentación.
 
-```bash
-# development
-$ pnpm run start
+### Pruebas
 
-# watch mode
-$ pnpm run start:dev
+- **`__test__/`**: Contiene las pruebas unitarias y de integración.
+  - **`application/`**, **`infrastructure/`**, **`presentation/`**: Pruebas organizadas por capas.
+  - **`mocks/`**: Datos de prueba y mocks utilizados en las pruebas.
 
-# production mode
-$ pnpm run start:prod
-```
+## Ejecución del Proyecto
 
-## Test
-
-```bash
-# unit tests
-$ pnpm run test
-
-# e2e tests
-$ pnpm run test:e2e
-
-# test coverage
-$ pnpm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+Instrucciones para ejecutar y configurar el proyecto localmente.
