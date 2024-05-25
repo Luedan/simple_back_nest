@@ -1,4 +1,4 @@
 /* istanbul ignore file */
-import { TODO_SERVICES } from './todo';
+import { TODO_USE_CASES } from './todo';
 
-export const SERVICES = [...TODO_SERVICES];
+export const USE_CASES = [...TODO_USE_CASES];

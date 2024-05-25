@@ -1,5 +1,5 @@
 import { AutoMap } from '@automapper/classes';
-import { IsNumber, IsOptional, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class TodoRequestDto {
   /**
@@ -14,6 +14,7 @@ export class TodoRequestDto {
    * Todo task
    */
   @IsString()
+  @IsNotEmpty()
   @AutoMap()
   task: string;
 

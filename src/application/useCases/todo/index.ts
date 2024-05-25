@@ -6,9 +6,9 @@ import { FindOneTodo } from './findOneTodo.service';
 import { UpdateTodo } from './updateTodo.service';
 
 /**
- * Array of todo services.
+ * Array of todo use cases.
  */
-export const TODO_SERVICES = [
+export const TODO_USE_CASES = [
   CreateTodo,
   UpdateTodo,
   FindAllTodo,

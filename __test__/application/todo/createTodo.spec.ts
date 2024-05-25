@@ -4,7 +4,7 @@ import { It, Mock } from 'moq.ts';
 import { TodoRepository } from '../../../src/infrastructure/persistence/repositories/todo/todo.repository';
 import { TodoRequestDto } from '../../../src/domain/todo/dto/todo-request.dto';
 import { Todo } from '../../../src/domain/todo/todo.entity';
-import { TodoRequestMock, TodoResponseMock } from '../../mocks/todoMocks';
+import { TodoMock, TodoResponseMock } from '../../mocks/todoMocks';
 import { TodoResponseDto } from '../../../src/domain/todo/dto/todo-response.dto';
 
 describe('Create Todo', () => {
@@ -26,11 +26,11 @@ describe('Create Todo', () => {
     // Arrange
     mapperMock
       .setup((mapper) => mapper.map(It.IsAny(), TodoRequestDto, Todo))
-      .returns(TodoRequestMock);
+      .returns(TodoMock);
 
     todoRepositoryMock
       .setup((todoRepository) => todoRepository.create(It.IsAny()))
-      .returns(Promise.resolve(TodoRequestMock));
+      .returns(Promise.resolve(TodoMock));
 
     mapperMock
       .setup((mapper) => mapper.map(It.IsAny(), Todo, TodoResponseDto))

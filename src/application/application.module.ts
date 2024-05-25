@@ -4,7 +4,7 @@ import { AutomapperModule } from '@automapper/nestjs';
 import { classes } from '@automapper/classes';
 import { InfrastructureModule } from '@app/infrastructure/infrastructure.module';
 import { JwtModule } from '@nestjs/jwt';
-import { SERVICES } from './useCases';
+import { USE_CASES } from './useCases';
 import { PROFILES } from './profiles';
 
 @Module({
@@ -21,7 +21,7 @@ import { PROFILES } from './profiles';
       },
     }),
   ],
-  providers: [...SERVICES, ...PROFILES],
-  exports: [...SERVICES],
+  providers: [...USE_CASES, ...PROFILES],
+  exports: [...USE_CASES],
 })
 export class ApplicationModule {}

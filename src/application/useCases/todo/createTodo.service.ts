@@ -5,7 +5,7 @@ import { TodoRepository } from '@app/infrastructure/persistence/repositories/tod
 import { TodoRequestDto } from '@app/domain/todo/dto/todo-request.dto';
 import { Todo } from '@app/domain/todo/todo.entity';
 import { TodoResponseDto } from '@app/domain/todo/dto/todo-response.dto';
-import { CreateTodoInterface } from '@app/domain/interfaces/services/todo/createTodo.interface';
+import { CreateTodoInterface } from '@app/domain/interfaces/application/todo/createTodo.interface';
 
 /**
  * Service class for creating a new todo.

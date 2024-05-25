@@ -11,7 +11,6 @@ export class GetPokemonByName {
 
   async execute(name: string) {
     const response = await this._http.get<any>(`/pokemon/${name}`);
-
     return response;
   }
 }

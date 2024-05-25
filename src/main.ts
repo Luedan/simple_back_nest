@@ -16,8 +16,8 @@ async function bootstrap() {
   app.setGlobalPrefix('/api');
 
   const config = new DocumentBuilder()
-    .setTitle('The OhMyDrive API')
-    .setDescription('The OhMyDrive API description')
+    .setTitle('The API')
+    .setDescription('The API description')
     .setVersion('1.0')
     .addBearerAuth()
     .build();

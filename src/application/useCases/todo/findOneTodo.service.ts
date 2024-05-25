@@ -1,7 +1,7 @@
 import { Mapper } from '@automapper/core';
 import { InjectMapper } from '@automapper/nestjs';
 import { Injectable } from '@nestjs/common';
-import { FindOneTodoInterface } from '@app/domain/interfaces/services/todo/findOneTodo.interface';
+import { FindOneTodoInterface } from '@app/domain/interfaces/application/todo/findOneTodo.interface';
 import { TodoRepository } from '@app/infrastructure/persistence/repositories/todo/todo.repository';
 import { Todo } from '@app/domain/todo/todo.entity';
 import { TodoResponseDto } from '@app/domain/todo/dto/todo-response.dto';
