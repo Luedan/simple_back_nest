@@ -2,6 +2,8 @@
 
 El proyecto inicialmente está ejemplificado mediante la implementación de un CRUD (Crear, Leer, Actualizar, Eliminar) de un TODO. Esta funcionalidad sirve como base para demostrar la arquitectura y las prácticas de desarrollo utilizadas, facilitando la comprensión y la extensión del código para otros casos de uso y dominios.
 
+![diagram](public/diagram.png)
+
 ## Arquitectura DDD & SOA
 
 Este proyecto implementa una arquitectura en capas y basada en servicios, siguiendo principios de Diseño Dirigido por el Dominio (DDD) y Arquitectura Orientada a Servicios (SOA). La estructura del código facilita la escalabilidad, el mantenimiento y la reutilización, con una clara separación de las responsabilidades en capas de aplicación, dominio, infraestructura y presentación.Descripción concisa del proyecto.

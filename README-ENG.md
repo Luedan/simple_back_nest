@@ -2,6 +2,8 @@
 
 The project is initially exemplified by the implementation of a CRUD (Create, Read, Update, Delete) for a TODO. This functionality serves as a basis to demonstrate the architecture and development practices used, facilitating the understanding and extension of the code for other use cases and domains.
 
+![diagram](public/diagram.png)
+
 ## DDD & SOA Architecture
 
 This project implements a layered and service-oriented architecture, following the principles of Domain-Driven Design (DDD) and Service-Oriented Architecture (SOA). The code structure facilitates scalability, maintenance, and reusability, with a clear separation of responsibilities into application, domain, infrastructure, and presentation layers. Concise description of the project.
@@ -119,7 +121,7 @@ cd <NOMBRE_PROYECTO>
 pnpm install
 ```
 
-if use NPM:
+If use NPM:
 
 ```
 npm install
@@ -150,7 +152,6 @@ If use Yarn:
 ```
 yarn dev
 ```
-
 
 This command will start the application in development mode with automatic reload when file changes are detected.
 
