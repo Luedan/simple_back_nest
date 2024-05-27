@@ -33,6 +33,7 @@ The project is organized following a modular and service-based architecture, whi
   - **`common/`**: Utilities and shared classes.
     - **`classes/`**: Generic and abstract classes.
     - **`filters/`**: Filters for handling HTTP exceptions.
+    - **`guards/`**: Guards to handle request security.
     - **`interceptors/`**: Interceptors for common functions like transactions.
     - **`types/`**: Type definitions and interfaces used throughout the project.
   - **`domain/`**: Domain logic.

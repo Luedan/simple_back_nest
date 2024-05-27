@@ -33,6 +33,7 @@ El proyecto está organizado siguiendo una arquitectura modular y basada en serv
   - **`common/`**: Utilidades y clases compartidas.
     - **`classes/`**: Clases genéricas y abstractas.
     - **`filters/`**: Filtros para manejar excepciones HTTP.
+    - **`guards/`**: Guardianes para manejos de las solicitudes con seguridad.
     - **`interceptors/`**: Interceptores para funciones comunes como transacciones.
     - **`types/`**: Definiciones de tipos y interfaces utilizadas en todo el proyecto.
   - **`domain/`**: Lógica del dominio.
@@ -152,8 +153,6 @@ o si usas Yarn:
 ```
 yarn dev
 ```
-
-
 
 Este comando iniciará la aplicación en modo de desarrollo con recarga automática cuando se detecten cambios en los archivos.
 
