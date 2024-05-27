@@ -1,5 +1,11 @@
 import { AutoMap } from '@automapper/classes';
-import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
+import {
+  IsBoolean,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 
 export class EmailParameterUpdateDto {
   /**
@@ -50,7 +56,7 @@ export class EmailParameterUpdateDto {
    * The secure of the Email parameter
    */
   @IsNotEmpty()
-  @IsString()
+  @IsBoolean()
   @IsOptional()
   @AutoMap()
   secure: boolean;

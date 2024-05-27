@@ -1,6 +1,6 @@
 import { HttpException, Injectable, Scope } from '@nestjs/common';
 import { AppContext } from '../../../context/appContext.service';
-import { EmailParameterRepositoryInterface } from '@app/domain/interfaces/infrastructure/parameters/email/emailParameterRepository.interface';
+import { EmailParameterRepositoryInterface } from '@app/domain/interfaces/infrastructure/persistence/parameters/email/emailParameterRepository.interface';
 import {
   GetAllCriteriaType,
   GetOneCriteriaType,

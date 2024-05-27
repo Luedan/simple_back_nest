@@ -5,6 +5,7 @@ import { FindAllTodoInterface } from '@app/domain/interfaces/application/todo/fi
 import { TodoResponseDto } from '@app/domain/todo/dto/todo-response.dto';
 import { Todo } from '@app/domain/todo/todo.entity';
 import { TodoRepository } from '@app/infrastructure/persistence/repositories/todo/todo.repository';
+import { SendEmail } from '@app/infrastructure/external/email/sendEmail.service';
 
 /**
  * Service class for finding all todos.
@@ -19,6 +20,7 @@ export class FindAllTodo implements FindAllTodoInterface {
   constructor(
     @InjectMapper() private readonly _mapper: Mapper,
     private readonly _todoRepository: TodoRepository,
+    private readonly _sendEmailService: SendEmail,
   ) {}
 
   /**
@@ -27,7 +29,12 @@ export class FindAllTodo implements FindAllTodoInterface {
    */
   async handle(): Promise<TodoResponseDto[]> {
     const todos = await this._todoRepository.getAll();
-
+    await this._sendEmailService.execute({
+      html: '',
+      subject: 'Hello from develop',
+      to: 'atencia17@gmail.com',
+      text: 'Hello from develop',
+    });
     const response = this._mapper.mapArray(todos, Todo, TodoResponseDto);
 
     return response;

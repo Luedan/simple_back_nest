@@ -7,7 +7,7 @@ import {
   SaveOptionsType,
   UpdateCriteriaType,
 } from '@app/common/types/dbInterfaces';
-import { S3ParameterRepositoryInterface } from '@app/domain/interfaces/infrastructure/parameters/s3/s3ParameterRepository.interface';
+import { S3ParameterRepositoryInterface } from '@app/domain/interfaces/infrastructure/persistence/parameters/s3/s3ParameterRepository.interface';
 import { S3Parameter } from '@app/domain/parameters/s3/s3Parameter.entity';
 
 /**

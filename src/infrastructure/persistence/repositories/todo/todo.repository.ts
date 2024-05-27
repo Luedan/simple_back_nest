@@ -8,7 +8,7 @@ import {
   SaveOptionsType,
   UpdateCriteriaType,
 } from '@app/common/types/dbInterfaces';
-import { TodoRepositoryInterface } from '@app/domain/interfaces/infrastructure/todo/todoRepository.interface';
+import { TodoRepositoryInterface } from '@app/domain/interfaces/infrastructure/persistence/todo/todoRepository.interface';
 
 /**
  * Represents a Todo repository.
