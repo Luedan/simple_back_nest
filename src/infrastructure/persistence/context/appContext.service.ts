@@ -5,6 +5,7 @@ import { Request } from 'express';
 import { AbstractRepository } from '@app/common/classes/abstractRepository';
 import { GenericRepository } from '@app/common/classes/genericRepository';
 import { Todo } from '@app/domain/todo/todo.entity';
+import { InjectDataSource } from '@nestjs/typeorm';
 
 /**
  * App context
@@ -18,7 +19,7 @@ export class AppContext {
   todo: AbstractRepository<Todo>;
 
   constructor(
-    private dataSource: DataSource,
+    @InjectDataSource('mili') private readonly dataSource: DataSource,
     @Inject('REQUEST') private request: Request,
   ) {
     this.todo = new GenericRepository(Todo, dataSource, request);

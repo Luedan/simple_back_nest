@@ -20,6 +20,7 @@ import { ENTITIES } from '@app/domain/entities';
       entities: [...ENTITIES],
       logging: true,
       synchronize: process.env.NODE_ENV !== 'production',
+      name: 'mili',
     }),
   ],
 })

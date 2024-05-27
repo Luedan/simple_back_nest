@@ -1,9 +1,12 @@
 /* istanbul ignore file */
 import { Module } from '@nestjs/common';
 import { AutomapperModule } from '@automapper/nestjs';
-import { classes } from '@automapper/classes';
-import { InfrastructureModule } from '@app/infrastructure/infrastructure.module';
 import { JwtModule } from '@nestjs/jwt';
+import { classes } from '@automapper/classes';
+/**
+ * Providers
+ */
+import { InfrastructureModule } from '@app/infrastructure/infrastructure.module';
 import { USE_CASES } from './useCases';
 import { PROFILES } from './profiles';
 
