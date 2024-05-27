@@ -69,6 +69,7 @@ export class TodoController {
    * @returns
    */
   @Put(':id')
+  @UseInterceptors(TransactionInterceptor)
   update(@Param('id') id: string, @Body() updateTodoDto: TodoUpdateDto) {
     return this._updateTodo.handle(+id, updateTodoDto);
   }
@@ -79,6 +80,7 @@ export class TodoController {
    * @returns
    */
   @Delete(':id')
+  @UseInterceptors(TransactionInterceptor)
   delete(@Param('id') id: string) {
     return this._deleteTodo.handle(+id);
   }
