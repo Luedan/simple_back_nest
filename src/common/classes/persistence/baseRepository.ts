@@ -1,7 +1,7 @@
 /* istanbul ignore file */
+import { ENTITY_MANAGER_KEY } from '@app/common/interceptors/transaction.interceptor';
 import { Request } from 'express';
 import { DataSource, EntityManager, Repository } from 'typeorm';
-import { ENTITY_MANAGER_KEY } from '../interceptors/transaction.interceptor';
 
 /* istanbul ignore next */
 export class BaseRepository {

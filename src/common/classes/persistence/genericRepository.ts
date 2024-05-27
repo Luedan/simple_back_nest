@@ -9,14 +9,15 @@ import {
 } from 'typeorm';
 import { Request } from 'express';
 import { BaseRepository } from './baseRepository';
+
+import { AbstractRepository } from './abstractRepository';
 import {
   GetAllCriteriaType,
   GetOneCriteriaType,
   UpdateCriteriaType,
   DeleteCriteriaType,
   SaveOptionsType,
-} from '../types/dbInterfaces';
-import { AbstractRepository } from './abstractRepository';
+} from '@app/common/types/dbInterfaces';
 
 /* istanbul ignore next */
 export class GenericRepository<E extends ObjectLiteral>

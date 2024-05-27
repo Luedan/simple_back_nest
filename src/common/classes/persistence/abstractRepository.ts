@@ -1,5 +1,11 @@
 /* istanbul ignore file */
 import {
+  GetAllCriteriaType,
+  GetOneCriteriaType,
+  UpdateCriteriaType,
+  DeleteCriteriaType,
+} from '@app/common/types/dbInterfaces';
+import {
   InsertResult,
   UpdateResult,
   ObjectLiteral,
@@ -7,12 +13,6 @@ import {
   FindManyOptions,
   Repository,
 } from 'typeorm';
-import {
-  GetAllCriteriaType,
-  GetOneCriteriaType,
-  UpdateCriteriaType,
-  DeleteCriteriaType,
-} from '../types/dbInterfaces';
 
 /* istanbul ignore next */
 export abstract class AbstractRepository<E extends ObjectLiteral> {

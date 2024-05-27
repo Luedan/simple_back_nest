@@ -5,8 +5,8 @@ import { TodoRepository } from '@app/infrastructure/persistence/repositories/tod
 import { TodoUpdateDto } from '@app/domain/todo/dto/todo-update.dto';
 import { Todo } from '@app/domain/todo/todo.entity';
 import { TodoResponseDto } from '@app/domain/todo/dto/todo-response.dto';
-import { UpdateTodoInterface } from '@app/domain/interfaces/application/todo/updateTodo.interface';
 import { FindOneTodo } from './findOneTodo.service';
+import { UpdateTodoInterface } from '@app/domain/interfaces/application/todo/updateTodo.interface';
 
 /**
  * Service class for updating a todo.
