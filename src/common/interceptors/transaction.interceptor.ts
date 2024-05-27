@@ -8,12 +8,15 @@ import {
 import { Request } from 'express';
 import { Observable, catchError, concatMap, finalize } from 'rxjs';
 import { DataSource } from 'typeorm';
+import { InjectDataSource } from '@nestjs/typeorm';
 
 export const ENTITY_MANAGER_KEY = 'ENTITY_MANAGER';
 
 @Injectable()
 export class TransactionInterceptor implements NestInterceptor {
-  constructor(private dataSource: DataSource) {}
+  constructor(
+    @InjectDataSource('mili') private readonly dataSource: DataSource,
+  ) {}
 
   async intercept(
     context: ExecutionContext,

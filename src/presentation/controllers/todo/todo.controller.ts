@@ -3,6 +3,7 @@ import { DeleteTodo } from '@app/application/useCases/todo/deleteTodo.service';
 import { FindAllTodo } from '@app/application/useCases/todo/findAllTodo.service';
 import { FindOneTodo } from '@app/application/useCases/todo/findOneTodo.service';
 import { UpdateTodo } from '@app/application/useCases/todo/updateTodo.service';
+import { TransactionInterceptor } from '@app/common/interceptors/transaction.interceptor';
 import { TodoRequestDto } from '@app/domain/todo/dto/todo-request.dto';
 import { TodoUpdateDto } from '@app/domain/todo/dto/todo-update.dto';
 import {
@@ -13,6 +14,7 @@ import {
   Param,
   Delete,
   Put,
+  UseInterceptors,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 
@@ -36,6 +38,7 @@ export class TodoController {
    * @returns
    */
   @Post()
+  @UseInterceptors(TransactionInterceptor)
   create(@Body() createTodoDto: TodoRequestDto) {
     return this._createTodo.handle(createTodoDto);
   }
