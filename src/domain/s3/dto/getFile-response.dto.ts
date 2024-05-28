@@ -17,8 +17,14 @@ export class GetFileResponseDto {
   key: string;
 
   /**
+   * The name of the file.
+   */
+  @AutoMap()
+  fileName: string;
+
+  /**
    * The content of the file.
    */
   @AutoMap()
-  body: string;
+  body: Buffer;
 }

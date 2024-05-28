@@ -5,6 +5,7 @@ import { GetFileResponseDto } from '@app/domain/s3/dto/getFile-response.dto';
 import { S3ParameterRepository } from '@app/infrastructure/persistence/repositories/parameters/s3/s3Parameter.repository';
 import { S3 } from '@aws-sdk/client-s3';
 import { FilesHelper } from '../../../common/classes/utils/filesHelper';
+import { Readable } from 'stream';
 
 /**
  * Service class for getting a file from Amazon S3.
@@ -60,17 +61,32 @@ export class GetFileS3 implements GetFileS3Interface {
 
       const bodyRes = await s3Response.Body.transformToString('base64');
 
-      const body = `data:${this._fileHelper.extFileType(this._fileHelper.getFileNameFromAwsKey(getFileRequestDto.key))};base64,${bodyRes}`;
+      const newBody = Buffer.from(bodyRes, 'base64');
 
       return {
         message: `File ${getFileRequestDto.key} retrieved from S3.`,
         key: getFileRequestDto.key,
-        body,
+        fileName: this._fileHelper.getFileNameFromAwsKey(getFileRequestDto.key),
+        body: newBody,
       };
     } catch (error) {
       throw new Error(
         `Error getting file ${getFileRequestDto.key} from S3: ${error.message}`,
       );
     }
+  }
+
+  /**
+   * Helper method to convert a readable stream to a buffer
+   * @param stream - The readable stream
+   * @returns A promise that resolves to a Buffer
+   */
+  private streamToBuffer(stream: Readable): Promise<Buffer> {
+    return new Promise((resolve, reject) => {
+      const chunks: Buffer[] = [];
+      stream.on('data', (chunk) => chunks.push(Buffer.from(chunk)));
+      stream.on('end', () => resolve(Buffer.concat(chunks)));
+      stream.on('error', reject);
+    });
   }
 }
