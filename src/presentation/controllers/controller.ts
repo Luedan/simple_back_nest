@@ -2,6 +2,7 @@ import { DefaultController } from './default/default.controller';
 import { HealthController } from './health/health.controller';
 import { EmailParameterController } from './parameters/email/emailParameter.controller';
 import { S3ParameterController } from './parameters/s3/s3Parameter.controller';
+import { SecurityController } from './security/security.controller';
 import { TodoController } from './todo/todo.controller';
 import { UserController } from './user/user.controller';
 
@@ -15,4 +16,5 @@ export const CONTROLLERS = [
   S3ParameterController,
   EmailParameterController,
   UserController,
+  SecurityController,
 ];

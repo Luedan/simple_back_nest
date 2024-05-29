@@ -20,7 +20,7 @@ import { PROFILES } from './profiles';
       secret: 'test-key',
       global: true,
       signOptions: {
-        expiresIn: '30m',
+        expiresIn: process.env.NODE_ENV === 'production' ? '30m' : '7d',
       },
     }),
   ],

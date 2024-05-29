@@ -32,6 +32,9 @@ export class AppContext implements AbstractContext {
    */
   emailParameter: AbstractRepository<EmailParameter>;
 
+  /**
+   * User repository
+   */
   user: AbstractRepository<User>;
 
   constructor(
