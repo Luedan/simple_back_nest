@@ -32,6 +32,8 @@ The project is organized following a modular and service-based architecture, whi
   - `app.module.ts`: Root module of the application.
   - **`common/`**: Utilities and shared classes.
     - **`classes/`**: Generic and abstract classes.
+    - **`constants/`**: Constant files.
+    - **`decorators/`**: Custom decorators files.
     - **`filters/`**: Filters for handling HTTP exceptions.
     - **`guards/`**: Guards to handle request security.
     - **`interceptors/`**: Interceptors for common functions like transactions.

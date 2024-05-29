@@ -32,6 +32,8 @@ El proyecto está organizado siguiendo una arquitectura modular y basada en serv
   - `app.module.ts`: Módulo raíz de la aplicación.
   - **`common/`**: Utilidades y clases compartidas.
     - **`classes/`**: Clases genéricas y abstractas.
+    - **`constants/`**: Archivos de constantes.
+    - **`decorators/`**: Decoradores personalizados.
     - **`filters/`**: Filtros para manejar excepciones HTTP.
     - **`guards/`**: Guardianes para manejos de las solicitudes con seguridad.
     - **`interceptors/`**: Interceptores para funciones comunes como transacciones.
