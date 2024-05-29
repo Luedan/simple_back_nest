@@ -9,6 +9,7 @@ import { Todo } from '@app/domain/todo/todo.entity';
 import { AbstractContext } from '@app/common/classes/persistence/abstractContext';
 import { EmailParameter } from '@app/domain/parameters/email/emailParameter.entity';
 import { S3Parameter } from '@app/domain/parameters/s3/s3Parameter.entity';
+import { User } from '@app/domain/user/user.entity';
 
 /**
  * App context
@@ -31,6 +32,8 @@ export class AppContext implements AbstractContext {
    */
   emailParameter: AbstractRepository<EmailParameter>;
 
+  user: AbstractRepository<User>;
+
   constructor(
     @InjectDataSource('mili') private readonly dataSource: DataSource,
     @Inject('REQUEST') private request: Request,
@@ -44,5 +47,7 @@ export class AppContext implements AbstractContext {
       dataSource,
       request,
     );
+
+    this.user = new GenericRepository(User, dataSource, request);
   }
 }
